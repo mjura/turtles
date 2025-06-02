@@ -101,7 +101,7 @@ var _ = Describe("[Docker] [Kubeadm]  Create and delete CAPI cluster functionali
 			CAPIProvidersOCIYAML: []testenv.OCIProvider{
 				{
 					Name: "docker",
-					File: e2e.CapiProvidersOci,
+					File: string(e2e.CapiProvidersOci),
 				},
 			},
 			WaitForDeployments: testenv.DefaultDeployments,
