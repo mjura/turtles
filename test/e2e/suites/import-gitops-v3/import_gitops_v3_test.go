@@ -98,7 +98,7 @@ var _ = Describe("[Docker] [Kubeadm]  Create and delete CAPI cluster functionali
 	specs.CreateMgmtV3UsingGitOpsSpec(ctx, func() specs.CreateMgmtV3UsingGitOpsSpecInput {
 		testenv.CAPIOperatorDeployProvider(ctx, testenv.CAPIOperatorDeployProviderInput{
 			BootstrapClusterProxy: bootstrapClusterProxy,
-			CAPIProvidersOCIYAML: []testenv.CAPIProvidersOCIYAML{
+			CAPIProvidersOCIYAML: []testenv.OCIProvider{
 				Name: "docker",
 				File: e2e.CapiProvidersOci,
 			},
