@@ -99,8 +99,10 @@ var _ = Describe("[Docker] [Kubeadm]  Create and delete CAPI cluster functionali
 		testenv.CAPIOperatorDeployProvider(ctx, testenv.CAPIOperatorDeployProviderInput{
 			BootstrapClusterProxy: bootstrapClusterProxy,
 			CAPIProvidersOCIYAML: []testenv.OCIProvider{
-				Name: "docker",
-				File: e2e.CapiProvidersOci,
+				{
+					Name: "docker",
+					File: e2e.CapiProvidersOci,
+				}
 			},
 			WaitForDeployments: testenv.DefaultDeployments,
 		})
