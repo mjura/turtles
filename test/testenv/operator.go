@@ -129,17 +129,19 @@ func CAPIOperatorDeployProvider(ctx context.Context, input CAPIOperatorDeployPro
 		Expect(turtlesframework.Apply(ctx, input.BootstrapClusterProxy, provider)).To(Succeed(), "Failed to add CAPI operator providers")
 	}
 
-	if input.CAPIProvidersOCIYAML.Name != "" && input.CAPIProvidersOCIYAML.File != "" {
-		name := input.CAPIProvidersOCIYAML.Name
-		By("Adding CAPI Operator provider from OCI: " + name)
+	for _, ociProvider := range input.CAPIProvidersOCIYAML {
+		if ociProvider.Name != "" && ociProvider.File != "" {
+			name := ociProvider.Name
+			By("Adding CAPI Operator provider from OCI: " + name)
 
-		providerVersion := getProviderVersion(name)
-		Expect(providerVersion).ToNot(BeEmpty(), "Failed to get provider versions from file")
+			providerVersion := getProviderVersion(name)
+			Expect(providerVersion).ToNot(BeEmpty(), "Failed to get provider versions from file")
 
-		Expect(turtlesframework.ApplyFromTemplate(ctx, turtlesframework.ApplyFromTemplateInput{
-			Proxy:    input.BootstrapClusterProxy,
-			Template: renderProviderTemplate(input.CAPIProvidersOCIYAML.File, ProviderTemplateData{ProviderVersion: providerVersion}),
-		})).To(Succeed(), "Failed to apply secret for capi providers")
+			Expect(turtlesframework.ApplyFromTemplate(ctx, turtlesframework.ApplyFromTemplateInput{
+				Proxy:    input.BootstrapClusterProxy,
+				Template: renderProviderTemplate(ociProvider.File, ProviderTemplateData{ProviderVersion: providerVersion}),
+			})).To(Succeed(), "Failed to apply secret for capi providers")
+		}
 	}
 
 	if len(input.WaitForDeployments) == 0 {
