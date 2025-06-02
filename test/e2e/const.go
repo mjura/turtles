@@ -135,7 +135,7 @@ var (
 	//go:embed data/gitea/values.yaml
 	GiteaValues []byte
 
-	//go:embed internal/controllers/clusterctl/config.yaml
+	//go:embed data/capi-operator/config.yaml
 	CAPIClusterctlConfig []byte
 )
 

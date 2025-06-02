@@ -194,7 +194,7 @@ func renderProviderTemplate(operatorTemplateFile string, data ProviderTemplateDa
 // getProviderVersionsFromFile reads the local config.yaml file and parses provider versions
 func getProviderVersion(name string) string {
 	// Read config.yaml file
-	filePath := "internal/controllers/clusterctl/config.yaml"
+	filePath := "data/capi-operators/config.yaml"
 	yamlContent, err := os.ReadFile(filePath)
 	Expect(err).ShouldNot(HaveOccurred(), "Failed to read file %s", filePath)
 
