@@ -51,7 +51,7 @@ type CAPIOperatorDeployProviderInput struct {
 	CAPIProvidersYAML [][]byte
 
 	// CAPIProvidersOCIYAML is the YAML representation of the CAPI providers with OCI.
-	CAPIProvidersOCIYAML OCIProvider
+	CAPIProvidersOCIYAML []OCIProvider
 
 	// TemplateData is the data used for templating.
 	TemplateData TemplateData
