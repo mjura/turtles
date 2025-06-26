@@ -54,8 +54,8 @@ var (
 	//go:embed data/capi-operator/azure-provider.yaml
 	AzureProvider []byte
 
-  //go:embed data/capi-operator/azure-provider-oci.yaml
-  AzureProviderOci []byte
+	//go:embed data/capi-operator/azure-provider-oci.yaml
+	AzureProviderOci []byte
 
 	//go:embed data/capi-operator/capa-identity-secret.yaml
 	AWSIdentitySecret []byte
